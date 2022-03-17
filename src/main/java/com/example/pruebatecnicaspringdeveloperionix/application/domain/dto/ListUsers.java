@@ -1,10 +1,11 @@
 package com.example.pruebatecnicaspringdeveloperionix.application.domain.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 /**
  * Class for Data Transfer
@@ -16,11 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserDto {
+public class ListUsers {
 
-    private String name;
-    @JsonProperty("user_name")
-    private String userName;
-    private String email;
-    private String phone;
+    private List<UserDto> users;
 }

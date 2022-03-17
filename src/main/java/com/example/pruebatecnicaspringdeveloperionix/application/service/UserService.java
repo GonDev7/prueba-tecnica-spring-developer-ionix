@@ -1,14 +1,21 @@
 package com.example.pruebatecnicaspringdeveloperionix.application.service;
 
+import com.example.pruebatecnicaspringdeveloperionix.application.domain.dto.UserDto;
 import com.example.pruebatecnicaspringdeveloperionix.application.domain.entity.User;
 
 import java.util.List;
 
+/**
+ * Interface user services
+ * @version 1.0.0 - 17 Mar 2022
+ * @author Gonzalo Rojas - gonzalo.rojasmardones@gmail.com
+ * @since 1.0.0 - 17 Mar 2022
+ */
 public interface UserService {
 
-    User createUser(User user);
+    UserDto createUser(UserDto user);
 
-    List<User> getUsers();
+    List<UserDto> getUsers();
 
-    User findByEmail(String email);
+    UserDto findByEmail(String email);
 }
