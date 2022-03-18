@@ -11,7 +11,7 @@ info:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
 paths:
-  /api/user:
+  /api/user/create:
     post:
       tags:
         - User
@@ -78,7 +78,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InternalServerError'
-  /api/user/email:
+  /api/find-user/email:
     get:
       tags:
         - User

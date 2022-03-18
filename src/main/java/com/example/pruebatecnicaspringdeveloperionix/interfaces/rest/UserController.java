@@ -24,7 +24,7 @@ public class UserController extends BaseService {
 
     private final UserService userService;
 
-    @PostMapping("/create")
+    @PostMapping("/user/create")
     public ResponseEntity<Object> createUser(@RequestBody UserDto user) {
         UserDto userFind = userService.findByEmail(user.getEmail());
         if (userFind != null) return setResponse("User exists", HttpStatus.OK);
@@ -36,7 +36,7 @@ public class UserController extends BaseService {
         return setResponse(userService.getUsers(), HttpStatus.OK);
     }
 
-    @GetMapping("/user/{email}")
+    @GetMapping("/find-user/{email}")
     public ResponseEntity<Object> getUserByEmail(@PathVariable("email") String email) {
         UserDto userFind = userService.findByEmail(email);
         if (userFind == null) return setResponse("User not found", HttpStatus.OK);
