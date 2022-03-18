@@ -12,6 +12,8 @@ public final class ConstantsProperties {
     public static final String URL_ENCRYPTION = "https://stoplight.io/mocks/spbusiness/test-tecnico/11631269/test-tecnico/search?rut=";
     public static final String KEY_ENCRYPTION = "ionix123456";
 
+    public static final String WS_TIME_OUT = "{app.ws.timeout}";
+
     /**
      * Hidden constructor
      */
