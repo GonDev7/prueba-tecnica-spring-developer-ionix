@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.example</groupId>
     <artifactId>prueba-tecnica-spring-developer-ionix</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>prueba-tecnica-spring-developer-ionix</name>
     <description>prueba-tecnica-spring-developer-ionix</description>
     <properties>

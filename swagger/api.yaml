@@ -11,7 +11,7 @@ info:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
 paths:
-  /user:
+  /api/user:
     post:
       tags:
         - User
@@ -46,7 +46,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InternalServerError'
-  /users:
+  /api/users:
     get:
       tags:
         - User
@@ -78,7 +78,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InternalServerError'
-  /user/email:
+  /api/user/email:
     get:
       tags:
         - User
@@ -99,6 +99,45 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
+        '400':
+          description: Unauthorized. This will be retouned when no authetication information is provided.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+        '404':
+          description: The requested resource was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+        '500':
+          description: Internal Server Error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+  /api/parameter-encryption:
+    post:
+      tags:
+        - Parameter Encryption
+      summary: Allow to encrypt a text string
+      description: Allow to encrypt a text string
+      operationId: parameter_encryption
+      requestBody:
+        description: Encrypt a text string
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ParameterEncryptionRequest'
+      responses:
+        '200':
+          description: Service executed correctly
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParameterEncryptionResponse'
         '400':
           description: Unauthorized. This will be retouned when no authetication information is provided.
           content:
@@ -141,6 +180,31 @@ components:
         phone:
           type: string
           example: "942694957"
+    ParameterEncryptionRequest:
+      type: object
+      properties:
+        param:
+          type: string
+          example: "1-9"
+    ParameterEncryptionResponse:
+      type: object
+      properties:
+        responseCode:
+          type: string
+          example: "200"
+        description:
+          type: string
+          example: "OK"
+        elapseTime:
+          type: string
+          example: "245"
+        result:
+          type: object
+          properties:
+            param:
+              type: integer
+              format: int32
+              example: 3
     Unauthorized:
       type: object
       properties:
