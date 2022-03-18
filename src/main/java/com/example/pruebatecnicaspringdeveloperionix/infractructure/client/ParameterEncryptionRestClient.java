@@ -1,7 +1,7 @@
 package com.example.pruebatecnicaspringdeveloperionix.infractructure.client;
 
 import com.example.pruebatecnicaspringdeveloperionix.application.domain.dto.ParameterEncryptionResponseService;
-import com.example.pruebatecnicaspringdeveloperionix.shared.UtilCommon;
+import com.example.pruebatecnicaspringdeveloperionix.shared.utils.UtilCommon;
 import com.example.pruebatecnicaspringdeveloperionix.shared.constants.ConstantsProperties;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;

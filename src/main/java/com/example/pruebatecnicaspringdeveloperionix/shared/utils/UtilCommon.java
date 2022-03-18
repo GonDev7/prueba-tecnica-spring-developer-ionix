@@ -1,4 +1,4 @@
-package com.example.pruebatecnicaspringdeveloperionix.shared;
+package com.example.pruebatecnicaspringdeveloperionix.shared.utils;
 
 import com.example.pruebatecnicaspringdeveloperionix.shared.constants.ConstantsProperties;
 
