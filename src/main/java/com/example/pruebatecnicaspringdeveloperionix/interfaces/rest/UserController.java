@@ -9,11 +9,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * End Points User service
- * @version 1.0.0 - 17 Mar 2022
+ * @version 1.0.1 - 25 Mar 2022
  * @author Gonzalo Rojas - gonzalo.rojasmardones@gmail.com
  * @since 1.0.0 - 17 Mar 2022
  */
@@ -24,10 +26,15 @@ public class UserController extends BaseService {
 
     private final UserService userService;
 
+    Map<String, Object> response = new HashMap<>();
+
     @PostMapping("/user/create")
     public ResponseEntity<Object> createUser(@RequestBody UserDto user) {
         UserDto userFind = userService.findByEmail(user.getEmail());
-        if (userFind != null) return setResponse("User exists", HttpStatus.OK);
+        if (userFind != null) {
+            response.put("response", "User exists");
+            return setResponse(response, HttpStatus.OK);
+        }
         return setResponse(userService.createUser(user), HttpStatus.OK);
     }
 
@@ -39,7 +46,10 @@ public class UserController extends BaseService {
     @GetMapping("/find-user/{email}")
     public ResponseEntity<Object> getUserByEmail(@PathVariable("email") String email) {
         UserDto userFind = userService.findByEmail(email);
-        if (userFind == null) return setResponse("User not found", HttpStatus.OK);
-        return setResponse(userService.findByEmail(email), HttpStatus.OK);
+        if (userFind == null) {
+            response.put("response", "User not found");
+            return setResponse(response, HttpStatus.OK);
+        }
+        return setResponse(userFind, HttpStatus.OK);
     }
 }
