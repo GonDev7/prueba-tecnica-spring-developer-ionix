@@ -16,7 +16,7 @@ import java.util.Map;
 
 /**
  * End Points User service
- * @version 1.0.1 - 25 Mar 2022
+ * @version 1.0.2 - 25 Mar 2022
  * @author Gonzalo Rojas - gonzalo.rojasmardones@gmail.com
  * @since 1.0.0 - 17 Mar 2022
  */
@@ -32,7 +32,7 @@ public class UserController extends BaseService {
         UserDto userFind = userService.findByEmail(user.getEmail());
         return userFind != null
                 ? setResponse(setMapResponse("response", "User exists"), HttpStatus.IM_USED)
-                :setResponse(userService.createUser(user), HttpStatus.CREATED);
+                : setResponse(userService.createUser(user), HttpStatus.CREATED);
     }
 
     @GetMapping("/users")
