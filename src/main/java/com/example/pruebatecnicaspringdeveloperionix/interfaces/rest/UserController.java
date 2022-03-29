@@ -3,6 +3,7 @@ package com.example.pruebatecnicaspringdeveloperionix.interfaces.rest;
 import com.example.pruebatecnicaspringdeveloperionix.application.domain.dto.UserDto;
 import com.example.pruebatecnicaspringdeveloperionix.application.service.UserService;
 import com.example.pruebatecnicaspringdeveloperionix.interfaces.BaseService;
+import com.example.pruebatecnicaspringdeveloperionix.interfaces.MapResponse;
 import com.example.pruebatecnicaspringdeveloperionix.shared.constants.ConstantsPath;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -26,16 +27,12 @@ public class UserController extends BaseService {
 
     private final UserService userService;
 
-    Map<String, Object> response = new HashMap<>();
-
     @PostMapping("/user/create")
     public ResponseEntity<Object> createUser(@RequestBody UserDto user) {
         UserDto userFind = userService.findByEmail(user.getEmail());
-        if (userFind != null) {
-            response.put("response", "User exists");
-            return setResponse(response, HttpStatus.OK);
-        }
-        return setResponse(userService.createUser(user), HttpStatus.OK);
+        return userFind != null
+                ? setResponse(setMapResponse("response", "User exists"), HttpStatus.IM_USED)
+                :setResponse(userService.createUser(user), HttpStatus.CREATED);
     }
 
     @GetMapping("/users")
@@ -46,10 +43,8 @@ public class UserController extends BaseService {
     @GetMapping("/find-user/{email}")
     public ResponseEntity<Object> getUserByEmail(@PathVariable("email") String email) {
         UserDto userFind = userService.findByEmail(email);
-        if (userFind == null) {
-            response.put("response", "User not found");
-            return setResponse(response, HttpStatus.OK);
-        }
-        return setResponse(userFind, HttpStatus.OK);
+        return userFind == null
+                ? setResponse(setMapResponse("response", "User not found"), HttpStatus.OK)
+                : setResponse(userFind, HttpStatus.OK);
     }
 }

@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
  * @since 1.0.0 - 17 Mar 2022
  */
 @RequiredArgsConstructor
-public abstract class BaseService {
+public abstract class BaseService extends MapResponse {
 
     protected <T> ResponseEntity<T> setResponse(T body, HttpStatus status) {
         return new ResponseEntity<>(body, status);
