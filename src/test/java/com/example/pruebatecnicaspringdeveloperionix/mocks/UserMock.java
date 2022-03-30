@@ -1,6 +1,7 @@
 package com.example.pruebatecnicaspringdeveloperionix.mocks;
 
 import com.example.pruebatecnicaspringdeveloperionix.application.domain.dto.UserDto;
+import com.example.pruebatecnicaspringdeveloperionix.application.domain.entity.User;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -44,10 +45,31 @@ public class UserMock {
     }
 
     /**
+     * Allow to create a User entity model
+     * @return User entity
+     */
+    public static User buildUser() {
+        return User.builder()
+                .name(NAME)
+                .userName(USER_NAME)
+                .email(EMAIL)
+                .phone(PHONE)
+                .build();
+    }
+
+    /**
      * Allow create a User DTO model
      * @return UserDto entity
      */
     public static UserDto buildUserDtoNotFound() {
+        return null;
+    }
+
+    /**
+     * Allow to create a User entity model
+     * @return User entity
+     */
+    public static User buildUserNotFound() {
         return null;
     }
 
@@ -57,6 +79,19 @@ public class UserMock {
      */
     public static List<UserDto> buildListUserDto() {
         return List.of(UserDto.builder()
+                .name(NAME)
+                .userName(USER_NAME)
+                .email(EMAIL)
+                .phone(PHONE)
+                .build());
+    }
+
+    /**
+     * Allow to create a list User entity model
+     * @return User list entity
+     */
+    public static List<User> buildListUser() {
+        return List.of(User.builder()
                 .name(NAME)
                 .userName(USER_NAME)
                 .email(EMAIL)
