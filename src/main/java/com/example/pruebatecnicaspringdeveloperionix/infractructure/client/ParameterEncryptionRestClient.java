@@ -10,7 +10,6 @@ import org.springframework.web.client.RestTemplate;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
-import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -27,7 +26,7 @@ public class ParameterEncryptionRestClient {
 
     private final RestTemplate restTemplate;
 
-    public ParameterEncryptionResponseService parameterEncryption(String value) throws NoSuchPaddingException, IllegalBlockSizeException, UnsupportedEncodingException, NoSuchAlgorithmException, InvalidKeySpecException, BadPaddingException, InvalidKeyException {
+    public ParameterEncryptionResponseService parameterEncryption(String value) throws NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, InvalidKeySpecException, BadPaddingException, InvalidKeyException {
         String paramEncrypted = UtilCommon.encryptForDES(value);
         return restTemplate.getForObject(ConstantsProperties.URL_ENCRYPTION + paramEncrypted, ParameterEncryptionResponseService.class);
     }

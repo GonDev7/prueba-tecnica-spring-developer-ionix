@@ -4,7 +4,7 @@ import com.example.pruebatecnicaspringdeveloperionix.shared.constants.ConstantsP
 
 import javax.crypto.*;
 import javax.crypto.spec.DESKeySpec;
-import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -24,14 +24,14 @@ public class UtilCommon {
      * @param param text string to be encrypted
      * @return text string to encrypted
      */
-    public static String encryptForDES(String param) throws InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException {
+    public static String encryptForDES(String param) throws InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
         SecureRandom sr = new SecureRandom();
-        DESKeySpec dks = new DESKeySpec(ConstantsProperties.KEY_ENCRYPTION.getBytes("UTF-8"));
+        DESKeySpec dks = new DESKeySpec(ConstantsProperties.KEY_ENCRYPTION.getBytes(StandardCharsets.UTF_8));
         SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
         SecretKey key1 = keyFactory.generateSecret(dks);
         Cipher cipher = Cipher.getInstance("DES");
         cipher.init(Cipher.ENCRYPT_MODE, key1, sr);
-        byte[] encryptedData = cipher.doFinal(param.getBytes("UTF-8"));
+        byte[] encryptedData = cipher.doFinal(param.getBytes(StandardCharsets.UTF_8));
         return Base64.getEncoder().encodeToString(encryptedData);
     }
 }

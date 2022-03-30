@@ -1,7 +1,6 @@
 package com.example.pruebatecnicaspringdeveloperionix.application.service;
 
 import com.example.pruebatecnicaspringdeveloperionix.application.domain.dto.ParameterEncryptionResponseDto;
-import com.example.pruebatecnicaspringdeveloperionix.application.domain.dto.ParameterEncryptionResponseService;
 import com.example.pruebatecnicaspringdeveloperionix.domain.ParameterEncryptionRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
