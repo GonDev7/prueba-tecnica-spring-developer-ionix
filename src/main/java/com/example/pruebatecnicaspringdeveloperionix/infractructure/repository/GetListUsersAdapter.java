@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 /**
  * Get List Users Adapter
- * @version 1.0.0 - 17 Mar 2022
+ * @version 1.0.1 - 30 Mar 2022
  * @author Gonzalo Rojas - gonzalo.rojasmardones@gmail.com
  * @since 1.0.0 - 17 Mar 2022
  */
@@ -25,15 +25,14 @@ public class GetListUsersAdapter implements GetListUsersRepository {
 
     private ListUsers getUsers() {
         ListUsers response = new ListUsers();
-        List<UserDto> usersDto =  userRepository.findAll().stream().map(users -> {
+        response.setUsers(userRepository.findAll().stream().map(users -> {
             UserDto userDto = new UserDto();
             userDto.setName(users.getName());
             userDto.setUserName(users.getUserName());
             userDto.setEmail(users.getEmail());
             userDto.setPhone(users.getPhone());
             return userDto;
-        }).collect(Collectors.toList());
-        response.setUsers(usersDto);
+        }).collect(Collectors.toList()));
         return response;
     }
 

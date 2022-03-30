@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  * Create user Adapter
- * @version 1.0.0 - 17 Mar 2022
+ * @version 1.0.1 - 30 Mar 2022
  * @author Gonzalo Rojas - gonzalo.rojasmardones@gmail.com
  * @since 1.0.0 - 17 Mar 2022
  */
@@ -21,13 +21,12 @@ public class CreateUserAdapter implements CreateUserRepository {
     private final UserRepository userRepository;
 
     private User buildUserEntity(UserDto user) {
-        User newUser = User.builder()
+        return userRepository.save(User.builder()
                 .name(user.getName())
                 .userName(user.getUserName())
                 .email(user.getEmail())
                 .phone(user.getPhone())
-                .build();
-        return userRepository.save(newUser);
+                .build());
     }
 
     @Override

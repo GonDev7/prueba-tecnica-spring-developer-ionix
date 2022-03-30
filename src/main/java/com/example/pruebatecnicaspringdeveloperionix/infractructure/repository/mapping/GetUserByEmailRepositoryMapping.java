@@ -6,7 +6,7 @@ import lombok.Builder;
 
 /**
  * Get User By Email mapping response
- * @version 1.0.0 - 17 Mar 2022
+ * @version 1.0.1 - 30 Mar 2022
  * @author Gonzalo Rojas - gonzalo.rojasmardones@gmail.com
  * @since 1.0.0 - 17 Mar 2022
  */
@@ -21,14 +21,13 @@ public class GetUserByEmailRepositoryMapping implements RepositoryAdapter<User, 
     @Override
     public UserDto getResponse(Object... parameters) {
         User userService = (User) parameters[0];
-        if (userService != null) {
-            return UserDto.builder()
-                    .name(userService.getName())
-                    .userName(userService.getUserName())
-                    .email(userService.getEmail())
-                    .phone(userService.getPhone())
-                    .build();
-        }
-        return null;
+        return userService != null
+                ? UserDto.builder()
+                .name(userService.getName())
+                .userName(userService.getUserName())
+                .email(userService.getEmail())
+                .phone(userService.getPhone())
+                .build()
+                : null;
     }
 }
