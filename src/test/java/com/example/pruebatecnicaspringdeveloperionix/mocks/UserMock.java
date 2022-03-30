@@ -1,7 +1,6 @@
-package com.example.pruebatecnicaspringdeveloperionix.Mocks;
+package com.example.pruebatecnicaspringdeveloperionix.mocks;
 
 import com.example.pruebatecnicaspringdeveloperionix.application.domain.dto.UserDto;
-import org.springframework.http.ResponseEntity;
 
 import java.util.Collections;
 import java.util.HashMap;

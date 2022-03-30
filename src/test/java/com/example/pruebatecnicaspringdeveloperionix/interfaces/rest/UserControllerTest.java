@@ -1,6 +1,6 @@
 package com.example.pruebatecnicaspringdeveloperionix.interfaces.rest;
 
-import com.example.pruebatecnicaspringdeveloperionix.Mocks.UserMock;
+import com.example.pruebatecnicaspringdeveloperionix.mocks.UserMock;
 import com.example.pruebatecnicaspringdeveloperionix.application.domain.dto.UserDto;
 import com.example.pruebatecnicaspringdeveloperionix.application.service.UserService;
 import org.junit.jupiter.api.Test;
@@ -34,19 +34,6 @@ class UserControllerTest {
     void createUserTest() {
         when(userService.createUser(any())).thenReturn(UserMock.buildUserDto());
         ResponseEntity<Object> newUser = userController.createUser(new UserDto());
-
-        assertNotNull(newUser);
-        assertEquals(HttpStatus.CREATED, newUser.getStatusCode());
-        assertEquals(UserMock.STATUS_CODE_CREATED, newUser.getStatusCodeValue());
-        assertEquals(UserMock.buildUserDto(), newUser.getBody());
-        assertEquals(UserDto.class, Objects.requireNonNull(newUser.getBody()).getClass());
-        assertEquals(ResponseEntity.class, newUser.getClass());
-    }
-
-    @Test
-    void createUserExistsTest() {
-        when(userService.createUser(any())).thenReturn(UserMock.buildUserDto());
-        ResponseEntity<Object> newUser = userController.createUser(UserMock.buildUserDto());
 
         assertNotNull(newUser);
         assertEquals(HttpStatus.CREATED, newUser.getStatusCode());
