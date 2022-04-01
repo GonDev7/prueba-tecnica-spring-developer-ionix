@@ -20,5 +20,4 @@ import java.util.List;
 public class ResultDto {
 
     private List<ItemsResponseDto> items;
-    private Integer registerCount;
 }

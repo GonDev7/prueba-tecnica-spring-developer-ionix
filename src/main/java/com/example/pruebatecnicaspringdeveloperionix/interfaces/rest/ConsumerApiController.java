@@ -22,7 +22,7 @@ import java.security.spec.InvalidKeySpecException;
 
 /**
  * End Points consumer api service
- * @version 1.0.0 - 17 Mar 2022
+ * @version 1.0.1 - 31 Mar 2022
  * @author Gonzalo Rojas - gonzalo.rojasmardones@gmail.com
  * @since 1.0.0 - 17 Mar 2022
  */
@@ -34,7 +34,7 @@ public class ConsumerApiController extends BaseService {
     private final ParameterEncryptionService parameterEncryptionService;
 
     @PostMapping("/parameter-encryption")
-    public ResponseEntity<Object> createUser(@RequestBody ParamDto param) throws NoSuchPaddingException, IllegalBlockSizeException, UnsupportedEncodingException, NoSuchAlgorithmException, InvalidKeySpecException, BadPaddingException, InvalidKeyException {
+    public ResponseEntity<Object> parameterEncryption(@RequestBody ParamDto param) throws NoSuchPaddingException, IllegalBlockSizeException, UnsupportedEncodingException, NoSuchAlgorithmException, InvalidKeySpecException, BadPaddingException, InvalidKeyException {
         return setResponse(parameterEncryptionService.parameterEncryption(param.getParam()), HttpStatus.OK);
     }
 }
